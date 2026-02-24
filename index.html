@@ -1,256 +1,199 @@
+Sitora✨, [24.02.2026 13:44]
 <!DOCTYPE html>
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mening Mutolaam - Kitoblar Portfoliosi</title>
+    <title>Mutolaa | Mening Kitoblarim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Umumiy stillar */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --main-orange: #FF8A00;
+            --bg-color: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --text-main: #1F2937;
+            --text-muted: #6B7280;
         }
 
         body {
-            background-color: #f8f9fa;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            line-height: 1.6;
         }
 
-        /* Header (Mutolaa uslubida) */
-        header {
-            background-color: #ffffff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 3px solid #f39c12; /* Mutolaa sariq-to'q sariq rangi */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        nav {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        header h1 {
-            color: #f39c12;
-            font-size: 28px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Konteyner */
+        .logo-box {
+            width: 35px;
+            height: 35px;
+            background: var(--main-orange);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--main-orange);
+            text-decoration: none;
+        }
+
         .container {
-            max-width: 1200px;
-            margin: 30px auto;
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
-        .section-title {
-            margin-bottom: 25px;
-            font-size: 22px;
-            border-left: 5px solid #f39c12;
-            padding-left: 15px;
+        .header-section {
+            margin-bottom: 30px;
         }
 
-        /* Kitoblar Setkasi (Grid) */
         .books-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 30px;
         }
 
-        /* Kitob Kartochkasi */
+        /* Havola stili */
+        .book-link {
+            text-decoration: none; /* Link chizig'ini olib tashlaydi */
+            color: inherit; /* Matn rangini saqlab qoladi */
+            display: block;
+        }
+
         .book-card {
-            background: #fff;
+            background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            border: 1px solid #eee;
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+            height: 100%;
         }
 
         .book-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+            border-color: var(--main-orange);
         }
 
         .book-cover {
             width: 100%;
-            height: 280px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .book-cover img {
-            width: 100%;
-            height: 100%;
+            height: 260px;
             object-fit: cover;
+            border-bottom: 1px solid #F3F4F6;
         }
 
-        .book-info {
+        .book-details {
             padding: 15px;
         }
 
-        .book-title {
-            font-weight: bold;
-            font-size: 16px;
-            margin-bottom: 5px;
+        .title {
+            font-weight: 600;
+            font-size: 15px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .author {
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-bottom: 8px;
             display: block;
         }
 
-        .book-author {
-            font-size: 14px;
-            color: #777;
-            margin-bottom: 10px;
-        }
-
-        /* Reyting (Yulduzchalar) */
         .rating {
-            color: #f39c12;
-            font-size: 14px;
+            color: #FFB800;
+            font-size: 12px;
         }
 
-        .status-tag {
-            display: inline-block;
-            background: #e8f5e9;
-            color: #2e7d32;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 20px;
-            margin-top: 10px;
-        }
-
-        /* Footer */
         footer {
+            margin-top: 60px;
+            padding: 30px;
             text-align: center;
-            padding: 40px;
-            color: #888;
-            font-size: 14px;
+            border-top: 1px solid #E5E7EB;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .book-cover {
+                height: 220px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>MUTOLAA</h1>
-        <p>Mening shaxsiy kutubxonam</p>
-    </header>
+    <nav>
+        <div class="logo-area">
+            <div class="logo-box">m</div>
+            <div class="logo-text">Mutolaa</div>
+        </div>
+    </nav>
 
     <div class="container">
-        <h2 class="section-title">O'qilgan kitoblar</h2>
-        
-        <div class="books-grid">
-            
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+1" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">O'tkan kunlar</span>
-                    <p class="book-author">Abdulla Qodiriy</p>
-                    <div class="rating">★★★★★</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+2" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">Atom odatlar</span>
-                    <p class="book-author">James Clear</p>
-                    <div class="rating">★★★★☆</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+3" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">Diqqat (Deep Work)</span>
-                    <p class="book-author">Cal Newport</p>
-                    <div class="rating">★★★★★</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
-            </div>
-
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Sizning+Kitob" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">Kitob nomi</span>
-                    <p class="book-author">Muallif ismi</p>
-                    <div class="rating">☆☆☆☆☆</div>
-                    <span class="status-tag" style="background: #fff3e0; color: #ef6c00;">O'qilmoqda</span>
-                </div>
-            </div>
-
+        <div class="header-section">
+            <h2>Mening kutubxonam</h2>
+            <p>Kitob ustiga bosing va u haqida batafsil ma'lumot oling</p>
         </div>
-    </div>
 
-    <div class="container">
-        <h2 class="section-title">O'qilgan kitoblar</h2>
-        
-        <div class="books-grid">
+Sitora✨, [24.02.2026 13:44]
+<div class="books-grid">
             
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+1" alt="Kitob muqovasi">
+            <a href="KITOB_HAVOLASI_SHU_YERGA" target="_blank" class="book-link">
+                <div class="book-card">
+                    <img src="https://m.media-amazon.com/images/I/81L8pI59VML.jpg" alt="Kitob" class="book-cover">
+                    <div class="book-details">
+                        <span class="title">Atom odatlar</span>
+                        <span class="author">James Clear</span>
+                        <div class="rating">★★★★★ 5.0</div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <span class="book-title">O'tkan kunlar</span>
-                    <p class="book-author">Abdulla Qodiriy</p>
-                    <div class="rating">★★★★★</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
-            </div>
+            </a>
 
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+2" alt="Kitob muqovasi">
+            <a href="IKKINCHI_KITOB_HAVOLASI" target="_blank" class="book-link">
+                <div class="book-card">
+                    <img src="https://m.media-amazon.com/images/I/71uF6vSUIWL.jpg" alt="Kitob" class="book-cover">
+                    <div class="book-details">
+                        <span class="title">Diqqat (Deep Work)</span>
+                        <span class="author">Cal Newport</span>
+                        <div class="rating">★★★★★ 4.8</div>
+                    </div>
                 </div>
-                <div class="book-info">
-                    <span class="book-title">Atom odatlar</span>
-                    <p class="book-author">James Clear</p>
-                    <div class="rating">★★★★☆</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
-            </div>
+            </a>
 
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Kitob+3" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">Diqqat (Deep Work)</span>
-                    <p class="book-author">Cal Newport</p>
-                    <div class="rating">★★★★★</div>
-                    <span class="status-tag">O'qildi</span>
-                </div>
             </div>
-
-            <div class="book-card">
-                <div class="book-cover">
-                    <img src="https://via.placeholder.com/200x280?text=Sizning+Kitob" alt="Kitob muqovasi">
-                </div>
-                <div class="book-info">
-                    <span class="book-title">Kitob nomi</span>
-                    <p class="book-author">Muallif ismi</p>
-                    <div class="rating">☆☆☆☆☆</div>
-                    <span class="status-tag" style="background: #fff3e0; color: #ef6c00;">O'qilmoqda</span>
-                </div>
-            </div>
-
-        </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Mutolaa Sayti. Kitob - bilim manbai.</p>
+        &copy; 2024 Mutolaa sayti.
     </footer>
 
 </body>
 </html>
-
